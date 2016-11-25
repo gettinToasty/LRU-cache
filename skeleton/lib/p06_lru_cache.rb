@@ -21,15 +21,11 @@ class LRUCache
       return link.val
     elsif count >= @max
       eject!
-      @store.append(key, calc!(key))
-      @map.set(key, @store.last)
-      return @store.last.val
-    else
-      @store.append(key, calc!(key))
-      @map.set(key, @store.last)
-      return @store.last.val
     end
 
+    @store.append(key, calc!(key))
+    @map.set(key, @store.last)
+    @store.last.val
   end
 
   def to_s
